@@ -4,6 +4,7 @@ import createIssueSchema from "@/app/validationSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Callout, Spinner, TextField } from "@radix-ui/themes";
 import axios from "axios";
+import delay from "delay";
 import "easymde/dist/easymde.min.css";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -18,7 +19,7 @@ import { z } from "zod";
 
 type IssueForm = z.infer<typeof createIssueSchema>;
 
-const NewIssuePage = () => {
+const NewIssuePage = async () => {
   const router = useRouter();
   const {
     register,
@@ -41,6 +42,8 @@ const NewIssuePage = () => {
       setError("An unexpected error occured");
     }
   });
+
+  await delay(2000);
 
   return (
     <div className="max-w-xl">
