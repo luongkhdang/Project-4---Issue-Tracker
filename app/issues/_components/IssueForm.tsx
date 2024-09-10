@@ -25,7 +25,7 @@ const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
 
 type IssueFormData = z.infer<typeof issueSchema>;
 
-const IssueForm = ({ issue }: { issue: Issue }) => {
+const IssueForm = ({ issue }: { issue?: Issue }) => {
   const router = useRouter();
   const {
     register,
@@ -44,6 +44,7 @@ const IssueForm = ({ issue }: { issue: Issue }) => {
       if (issue) await axios.patch("/api/issues/" + issue.id, data);
       else await axios.post("/api/issues", data);
       router.push("/issues");
+      router.refresh();
     } catch (error) {
       setSubmitting(false);
       setError("An unexpected error occured");
