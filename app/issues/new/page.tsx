@@ -2,7 +2,7 @@
 import ErrorMessage from "@/app/components/ErrorMessage";
 import createIssueSchema from "@/app/validationSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Callout, TextField } from "@radix-ui/themes";
+import { Button, Callout, Spinner, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
 import { useRouter } from "next/navigation";
@@ -60,7 +60,9 @@ const NewIssuePage = () => {
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
-        <Button disabled={isSubmitting}>Submit new issue</Button>
+        <Button disabled={isSubmitting}>
+          Submit new issue{isSubmitting && <Spinner />}
+        </Button>
       </form>
     </div>
   );
