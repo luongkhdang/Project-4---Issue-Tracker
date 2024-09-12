@@ -13,7 +13,7 @@ const AssigneeSelect = () => {
       setUsers(data);
     };
     fetchUsers();
-  });
+  }, []);
 
   return (
     <Select.Root>
