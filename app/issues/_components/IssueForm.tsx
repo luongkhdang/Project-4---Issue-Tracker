@@ -1,7 +1,7 @@
 "use client";
 
 import ErrorMessage from "@/app/components/ErrorMessage";
-import issueSchema from "@/app/validationSchemas";
+import { issueSchema } from "@/app/validationSchemas";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Issue } from "@prisma/client";
